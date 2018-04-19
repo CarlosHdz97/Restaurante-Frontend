@@ -63,7 +63,8 @@ export default {
     addProvedor() {
       this.axios.post(url+"provedor/", this.provedor)
       .then(res => {
-        this.$router.replace({name :'DisplayProvedor'})
+        alert("Proveedor agregado correctamente!!!");
+        this.$router.replace({name :'DisplayProvedor'});
       })
       .catch(err => console.log(err));
     }

@@ -72,6 +72,7 @@ export default {
       const uri = "https://restaurante-backend.herokuapp.com/provedor/";
       this.axios.put(uri+this.$route.params.id, this.provedor)
       .then( res => {
+        alert("Proveedor actualizado correctamente!!!");
         this.$router.replace({name: 'DisplayProvedor'});
       });
     }
