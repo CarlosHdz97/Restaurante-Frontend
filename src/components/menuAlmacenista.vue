@@ -1,56 +1,61 @@
 <template lang="html">
   <div>
-    </br>
-    <div class="level">
-      <p class="level-item has-text-centered">
-        <a class="title">Menú almacenista</a>
-      </br>
-      </p>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter title is-4">
+        Bienvenido almacenistas
+      </div>
     </div>
-    <div class="columns is-gapless">
-      <div class="column">
-        <div class="field is-grouped is-grouped-centered">
-          <p class="title is-3">Proveedores</p>
-        </div>
-        <figure class="image is-square">
-          <img src="../assets/proveedores.jpeg" alt="Proveedores">
-        </figure>
-        <div class="field is-grouped is-grouped-centered">
-          <p class="control">
-            <router-link :to="{ name: 'DisplayProvedor'}" class="button is-link is-rounded">
-              Ir
-            </router-link>
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <br>
+        <aside class="menu">
+          <p class="menu-label">
+            Menú
           </p>
-        </div>
+          <ul class="menu-list">
+            <router-link :to="{ name: 'DisplayProvedor'}">
+              Proveedores
+            </router-link>
+            <li>
+              <a class="is-active">Productos</a>
+              <ul>
+                <router-link :to="{ name: 'DisplayProduct'}">
+                  Todos
+                </router-link>
+                <li><a>Próximos a agotarse</a></li>
+                <li><a>Agotados</a></li>
+                <li><a>Próximos a caducar</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="is-active">Pedidos</a>
+              <ul>
+                <li><a>Todos</a></li>
+                <li><a>Próximos a ser entregados</a></li>
+              </ul>
+            </li>
+            <router-link :to="{ name: 'Init'}">
+              Cerrar sesión
+              <span class="icon is-small is-left">
+                <i class="fas fa-sign-out-alt fa-lg"></i>
+              </span>
+            </router-link>
+          </ul>
+        </aside>
       </div>
       <div class="column">
-        <div class="field is-grouped is-grouped-centered">
-          <p class="title is-3">Productos</p>
+        <p class="title is-3">Notificaciones</p>
+        <div class="notification is-info">
+          <button class="delete"></button>
+          Hoy se surtira el pedido <strong>Tal.....</strong>
         </div>
-        <figure class="image is-square">
-          <img src="../assets/Productos.jpg" alt="Productos">
-        </figure>
-        <div class="field is-grouped is-grouped-centered">
-          <p class="control">
-            <router-link :to="{ name: 'DisplayProduct'}" class="button is-link is-rounded">
-              Ir
-            </router-link>
-          </p>
+        <div class="notification is-danger">
+          <button class="delete"></button>
+          El producto <strong>tal.....</strong> esta inexistente y es requerido para futuros platillos
         </div>
-      </div>
-      <div class="column">
-        <div class="field is-grouped is-grouped-centered">
-          <p class="title is-3">Pedidos</p>
-        </div>
-        <figure class="image is-square">
-          <img src="../assets/Pedidos.jpg" alt="Cajero">
-        </figure>
-        <div class="field is-grouped is-grouped-centered">
-          <p class="control">
-            <button class="button is-link is-rounded">
-              Ir
-            </button>
-          </p>
+        <div class="notification is-warning">
+          <button class="delete"></button>
+          El producto <strong>tal.......</strong> esta por llegar al stock minimo y es requerido para futuros platillos
         </div>
       </div>
     </div>
