@@ -22,8 +22,10 @@
                 <router-link :to="{ name: 'DisplayProduct'}">
                   Todos
                 </router-link>
+                <router-link :to="{ name: 'DisplayProductSoldOut'}">
+                  Agotados
+                </router-link>
                 <li><a>Próximos a agotarse</a></li>
-                <li><a>Agotados</a></li>
                 <li><a>Próximos a caducar</a></li>
               </ul>
             </li>

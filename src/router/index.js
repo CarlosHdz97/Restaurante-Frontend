@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Init from '@/components/Init'
 
 import DisplayProduct from '@/components/DisplayProduct'
+import DisplayProductSoldOut from '@/components/DisplayProductSoldOut'
 import CreateProduct from '@/components/CreateProduct'
 import UpdateProduct from '@/components/UpdateProduct'
 
@@ -41,6 +42,11 @@ export default new Router({
       name: 'UpdateProduct',
       path: 'product/update/:id',
       component: UpdateProduct
+    },
+    {
+      name: 'DisplayProductSoldOut',
+      path: 'product/soldOut',
+      component: DisplayProductSoldOut
     },
     {
       name: 'DisplayProvedor',
