@@ -25,7 +25,9 @@
                 <router-link :to="{ name: 'DisplayProductSoldOut'}">
                   Agotados
                 </router-link>
-                <li><a>Próximos a agotarse</a></li>
+                <router-link :to="{ name: 'DisplayProductSoonSellOut'}">
+                  Próximos a agotarse
+                </router-link>
                 <li><a>Próximos a caducar</a></li>
               </ul>
             </li>
@@ -36,7 +38,7 @@
                 <li><a>Próximos a ser entregados</a></li>
               </ul>
             </li>
-            <router-link :to="{ name: 'Init'}">
+            <router-link :to="{ name: 'Init'}" class="notification is-dark">
               Cerrar sesión
               <span class="icon is-small is-left">
                 <i class="fas fa-sign-out-alt fa-lg"></i>

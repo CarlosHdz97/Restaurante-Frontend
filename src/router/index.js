@@ -5,6 +5,7 @@ import Init from '@/components/Init'
 
 import DisplayProduct from '@/components/DisplayProduct'
 import DisplayProductSoldOut from '@/components/DisplayProductSoldOut'
+import DisplayProductSoonSellOut from '@/components/DisplayProductSoonSellOut'
 import CreateProduct from '@/components/CreateProduct'
 import UpdateProduct from '@/components/UpdateProduct'
 
@@ -47,6 +48,11 @@ export default new Router({
       name: 'DisplayProductSoldOut',
       path: 'product/soldOut',
       component: DisplayProductSoldOut
+    },
+    {
+      name: 'DisplayProductSoonSellOut',
+      path: 'product/soonSellOut',
+      component: DisplayProductSoonSellOut
     },
     {
       name: 'DisplayProvedor',
