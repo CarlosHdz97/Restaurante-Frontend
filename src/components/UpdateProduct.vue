@@ -2,7 +2,7 @@
   <div>
     <div class="columns">
       <div class="column is-6 is-offset-3">
-        <h1 class="title">Actualizar Producto</h1>
+        <h1 class="title">Actualizar datos del producto</h1>
         <form v-on:submit.prevent="updateProduct">
           <div class="field">
             <label class="label">Nombre</label>
@@ -11,9 +11,15 @@
             </div>
           </div>
           <div class="field">
+            <label class="label">Precio</label>
+            <div class="control">
+              <input class="input" type="number" min="0" step="any" v-model="product.price" placeholder="Precio" value="0" required>
+            </div>
+          </div>
+          <div class="field">
             <label class="label">Cantidad</label>
             <div class="control">
-              <input class="input" type="number" min="0" step="any" v-model="product.amount" placeholder="Cantidad" value="0">
+              <input class="input" type="number" min="0" step="any" v-model="product.amount" placeholder="Cantidad" value="0" disabled>
             </div>
           </div>
           <div class="field">
@@ -108,14 +114,10 @@ export default {
     });
     },
     updateProduct(){
+      this.product.price= parseFloat(this.product.price);
       this.product.amount= parseInt(this.product.amount);
       this.product.minStock= parseInt(this.product.minStock);
       this.product.maxStock= parseInt(this.product.maxStock);
-      function boolean(string){
-        if(string=="true") return true
-        else return false
-      }
-      this.product.kind = boolean(this.product.kind);
       this.axios.put(url+"product/"+this.$route.params.id, this.product)
       .then( res => {
         this.$router.replace({name: 'DisplayProduct'});

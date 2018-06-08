@@ -2,7 +2,7 @@
   <div>
     <div class="columns">
       <div class="column is-6 is-offset-3">
-        <h1 class="title">Actualizar Proveedor</h1>
+        <h1 class="title">Actualizar datos del proveedor</h1>
         <form v-on:submit.prevent="updateProvedor">
           <div class="field">
             <label class="label">Nombre del proveedor</label>
@@ -19,13 +19,13 @@
           <div class="field">
             <label class="label">Teléfono</label>
             <div class="control">
-              <input class="input" type="tel" v-model="provedor.phone" placeholder="Ingrese un número teléfonico" required>
+              <input class="input tel" v-on:keydown="validate" type="tel" v-model="provedor.phone" placeholder="Ingrese un número teléfonico" required>
             </div>
           </div>
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="email" v-model="provedor.email" placeholder="Ingrese el email del proveedor" required>
+              <input class="input correo" v-on:keydown="validate" type="email" v-model="provedor.email" placeholder="Ingrese el email del proveedor" required>
             </div>
           </div>
           <div class="field">
@@ -62,19 +62,55 @@ export default {
   },
   methods:{
     getProvedor(){
-      const uri = "https://restaurante-backend.herokuapp.com/provedor/";
-      this.axios.get(uri+this.$route.params.id)
+      this.axios.get(url+"provedor/"+this.$route.params.id)
       .then(res => {
         this.provedor = res.data;
       });
     },
     updateProvedor(){
-      const uri = "https://restaurante-backend.herokuapp.com/provedor/";
-      this.axios.put(uri+this.$route.params.id, this.provedor)
+      //const uri = "https://restaurante-backend.herokuapp.com/provedor/";
+      this.axios.put(url+"provedor/"+this.$route.params.id, this.provedor)
       .then( res => {
         alert("Proveedor actualizado correctamente!!!");
         this.$router.replace({name: 'DisplayProvedor'});
       });
+    },
+    validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
+    validateTelefono(number) {
+      var re=/^[1-9]{8,12}$/;
+      return re.test(parseInt(number));
+    },
+    validate(){
+        //validaciones de email
+        var correo = document.getElementsByClassName("correo");
+        for(var i=0; i<correo.length; i++){
+          correo[i].addEventListener("keyup", function (event) {
+            if (!validateEmail(this.value)) {
+              this.setCustomValidity("Ingrese una dirección de correo valida! ej: usuario@dominio.terminación");
+            } else {
+              this.setCustomValidity("");
+              validateEmail(this.value);
+            }
+          });
+
+      //validaciones de nímero telefonico
+        var number = document.getElementsByClassName("tel");
+        for(var i=0; i<number.length; i++){
+          number[i].addEventListener("keyup", function (event) {
+             if (!validateTelefono(this.value)) {
+               this.setCustomValidity("Ingrese una número de teléfono valido");
+          } else {
+            this.setCustomValidity("");
+            validateTelefono(this.value)
+          }
+        });
+        }
+
+      }
+
     }
   }
 }

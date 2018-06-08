@@ -6,7 +6,10 @@ import router from './router'
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+import localStorage from 'vue-localstorage';
+import sessionStorage from 'vue-sessionstorage';
 Vue.use(VueAxios, axios);
+Vue.use(localStorage, sessionStorage);
 
 
 Vue.config.productionTip = false

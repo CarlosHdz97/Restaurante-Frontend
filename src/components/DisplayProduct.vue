@@ -12,13 +12,6 @@
       </div>
       <div class="column is-8">
       </div>
-      <div class="column is-1">
-        <router-link :to="{ name: 'Init'}" class="button is-link is-rounded">
-          <span class="icon is-small is-left">
-            <i class="fas fa-sign-out-alt fa-lg"></i>
-          </span>
-        </router-link>
-      </div>
     </div>
     <div class="columns">
       <div class="column is-10 is-offset-1">
@@ -27,6 +20,7 @@
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Precio</th>
               <th>Existencia</th>
               <th>Stock minimo</th>
               <th>Stock maximo</th>
@@ -37,18 +31,19 @@
           <tbody>
             <tr  v-for="product in products">
               <td>{{product.name}}</td>
+              <td>{{product.price}}</td>
               <td>{{product.amount + " " + product.unit}}</td>
               <td>{{product.minStock + " " + product.unit}}</td>
               <td>{{product.maxStock + " " + product.unit}}</td>
-              <td v-if="product.kind==true">Perecedero</td>
+              <td v-if="product.kind==1">Perecedero</td>
               <td v-else >No perecedero</td>
               <td>{{product.provedor.name}}</td>
               <td>
-                <a href="#" v-on:click="deleteProduct(product.id, product.name)">
+                <span v-on:click="deleteProduct(product.id, product.name)">
                   <span class="icon is-small is-left">
                     <i class="fas fa-trash-alt fa-lg"></i>
                   </span>
-                </a>
+                </span>
                 <router-link :to="{ name: 'UpdateProduct', params: {id: product.id} }">
                   <span class="icon is-small is-left">
                     <i class="fas fa-pen-square fa-lg"></i>
@@ -58,20 +53,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column is-2 is-offset-10">
-        <p class="control">
-          <a class="button is-light">
-            <router-link :to="{ name: 'MenuAlmacenista'}" class="button is-link is-rounded">
-              <span class="icon is-small is-left">
-                <i class="fas fa-arrow-left fa-lg"></i>
-              </span>
-              . Volver al menú
-            </router-link>
-          </a>
-        </p>
       </div>
     </div>
   </div>
@@ -89,7 +70,7 @@
     },
     methods:{
       fetchProducts(){
-        this.axios.get(url+"product/")
+        this.axios.get(url+"product")
         .then(res=>{
           this.products = res.data;
         })

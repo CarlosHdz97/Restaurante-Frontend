@@ -14,7 +14,11 @@ import DisplayProvedor from '@/components/DisplayProvedor'
 import CreateProvedor from '@/components/CreateProvedor'
 import UpdateProvedor from '@/components/UpdateProvedor'
 
-const URL ='http://localhost:3000'
+import CreateOrder from '@/components/CreateOrder'
+import DisplayOrder from '@/components/DisplayOrder'
+import DisplayOrderSinEntregar from '@/components/DisplayOrderSinEntregar'
+
+
 
 Vue.use(Router)
 export default new Router({
@@ -58,8 +62,7 @@ export default new Router({
       name: 'DisplayProvedor',
       path: '/provedor',
       component: DisplayProvedor
-    }
-    ,
+    },
     {
       name: 'CreateProvedor',
       path: '/provedor/create',
@@ -69,6 +72,21 @@ export default new Router({
       name: 'UpdateProvedor',
       path: 'provedor/update/:id',
       component: UpdateProvedor
+    },
+    {
+      name: 'CreateOrder',
+      path: '/order/create',
+      component: CreateOrder
+    },
+    {
+      name: 'DisplayOrder',
+      path: '/order',
+      component: DisplayOrder
+    },
+    {
+      name: 'DisplayOrderSinEntregar',
+      path: '/order/soon',
+      component: DisplayOrderSinEntregar
     }
   ]
 })

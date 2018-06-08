@@ -1,32 +1,12 @@
-<template lang="html">
-  <div>
-    <nav class="level">
-      <!-- Left side -->
-      <div class="level-left">
-        
-        <div class="level-item">
-
-        </div>
-      </div>
-
-      <!-- Right side -->
-      <div class="level-right">
+<!--<template>
+    <div id="login">
+        <h1>Login</h1>
         <input class="input" type="text" name="username" v-model="input.username" placeholder="Username" />
         <input class="input" type="password" name="password" v-model="input.password" placeholder="Password" />
-        <button type="button" v-on:click="login()" class="button is-dark">Login</button>
-      </div>
-    </nav>
-    <!-- Main container -->
-
-    <div class="columns is-gapless">
-      <div class="column">
-        <p class="is-size-1">Menú</p>
-        <p class="is-size-1">aparecera en breve</p>
-      </div>
+        <button type="button" v-on:click="login()">Login</button>
     </div>
-
-  </div>
 </template>
+
 <script>
     export default {
         name: 'Login',
@@ -69,3 +49,4 @@
         }
     }
 </script>
+-->

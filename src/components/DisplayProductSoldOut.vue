@@ -3,7 +3,7 @@
   </br>
     <div class="columns">
       <div class="column is-10 is-offset-1">
-        <h1 class="title">Productos agotados</h1>
+        <h1 class="title">Productos agotados en almacén</h1>
         <table class="table is-striped is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>

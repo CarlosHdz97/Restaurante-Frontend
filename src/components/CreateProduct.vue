@@ -2,12 +2,18 @@
   <div>
     <div class="columns">
       <div class="column is-6 is-offset-3">
-        <h1 class="title">Agregar Producto</h1>
+        <h1 class="title">Agregar nuevo producto al almacén</h1>
         <form v-on:submit.prevent="addProduct">
           <div class="field">
             <label class="label">Nombre</label>
             <div class="control">
-              <input class="input" type="text" v-model="product.name" placeholder="Nombre del producto" required autofocus>
+              <input class="input" v-on:keydown="validate" type="text" v-model="product.name" placeholder="Nombre del producto" required autofocus>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Precio</label>
+            <div class="control">
+              <input class="input" v-on:keydown="validate" type="number" min="0" step="any" v-model="product.price" placeholder="Precio" value="0" required>
             </div>
           </div>
           <div class="field">
@@ -19,13 +25,13 @@
           <div class="field">
             <label class="label">Stock mínimo</label>
             <div class="control">
-              <input class="input" type="number" min="0" step="any" v-model="product.minStock" placeholder="Stock mínimo" value="0" required>
+              <input class="input" id="min" type="number" min="0" step="any" v-model="product.minStock" placeholder="Stock mínimo" value="0" required>
             </div>
           </div>
           <div class="field">
             <label class="label">Stock Máximo</label>
             <div class="control">
-              <input class="input" type="number" min="0" step="any" v-model="product.maxStock" placeholder="Stock máximo" value="0" required>
+              <input class="input" id="max" type="number" min="0" step="any" v-model="product.maxStock" placeholder="Stock máximo" value="0" required>
             </div>
           </div>
           <div class="field" >
@@ -100,6 +106,7 @@ export default {
       .catch(err => console.log(err));
     },
     addProduct() {
+      this.product.price= parseFloat(this.product.price);
       this.product.amount= parseFloat(this.product.amount);
       this.product.minStock= parseFloat(this.product.minStock);
       this.product.maxStock= parseFloat(this.product.maxStock);
@@ -113,6 +120,20 @@ export default {
         this.$router.replace({name :'DisplayProduct'})
       })
       .catch(err => console.log(err));
+    },
+    validate() {
+      var min = document.getElementById("min");
+      var max = document.getElementById("max");
+      
+      max.addEventListener("keyup", function (event) {
+        if (min.value>max.value) {
+          max.setCustomValidity("El stock máximo no puede ser menor al stock mínimo");
+        } else if (min.value==max.value) {
+          max.setCustomValidity("El stock máximo no puede ser igual al stock mínimo");
+        }else{
+          this.setCustomValidity("");
+        }
+      });
     }
   }
 }
