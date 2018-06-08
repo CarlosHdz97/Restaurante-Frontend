@@ -69,12 +69,12 @@
                 </div>
               </div>
             </div>
-            <span class="button is-success" v-on:click="agregarProducto()">
+            <!--<span class="button is-success" v-on:click="agregarProducto()">
               <span class="icon is-small is-left">
                 <i class="fas fa-plus-square fa-lg"></i>
               </span>
               .  Añadir Producto
-            </span>
+            </span>-->
           </div>
           <div>Total:
             <span v-if="detail.productId"><span v-for="product in products">
@@ -83,11 +83,11 @@
               </span>
             </span></span>
           </div><br>
-          <input type="submit" name="" value="Guardar" class="button is-link is-rounded">
+          <input type="submit" value="Guardar" class="button is-link is-rounded">
         </form>
       </div>
     </div>
-    <div class="columns">
+    <!--<div class="columns">
       <div class="column is-8 is-offset-2">
         <p class="is-size-3">Detalles del pedido</p>
         <table class="table">
@@ -109,7 +109,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -152,7 +152,7 @@ export default {
   },
     addOrder() {
       //modificar--------------------------------------------------
-      this.product.price= parseFloat(this.product.price);
+      /*this.product.price= parseFloat(this.product.price);
       this.product.amount= parseFloat(this.product.amount);
       this.product.minStock= parseFloat(this.product.minStock);
       this.product.maxStock= parseFloat(this.product.maxStock);
@@ -165,7 +165,9 @@ export default {
       .then(res => {
         this.$router.replace({name :'DisplayProduct'})
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err));*/
+      alert("Se ha guardado su pedido con exíto")
+      this.$router.replace({name :'DisplayOrder'})
     },
     productsProvedor(id){
       var provedor = document.getElementById("provedor");

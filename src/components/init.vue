@@ -1,9 +1,9 @@
 <template lang="html">
   <div>
-    <nav class="level">
+    <nav class="level" v-if="!authenticated">
       <!-- Left side -->
       <div class="level-left">
-        
+
         <div class="level-item">
 
         </div>
@@ -11,17 +11,61 @@
 
       <!-- Right side -->
       <div class="level-right">
-        <input class="input" type="text" name="username" v-model="input.username" placeholder="Username" />
-        <input class="input" type="password" name="password" v-model="input.password" placeholder="Password" />
+        <input class="input" type="email" name="username" v-model="input.username" placeholder="Correo" />
+        <input class="input" type="password" name="password" v-model="input.password" placeholder="Contreñas" />
         <button type="button" v-on:click="login()" class="button is-dark">Login</button>
       </div>
     </nav>
     <!-- Main container -->
 
-    <div class="columns is-gapless">
-      <div class="column">
-        <p class="is-size-1">Menú</p>
-        <p class="is-size-1">aparecera en breve</p>
+    <p class="is-size-3">Menú del día</p>
+    <div class="columns">
+      <div class="column is-3 is-offset-1">
+        <article class="message is-info">
+          <div class="message-header">
+            <p>ESPECIALES</p>
+          </div>
+          <div class="message-body content">
+            <ul>
+              <li>SOPA FRIA DE AGUACATE</li>
+              <li>FIDEO SECO A LOS 3 CHILES </li>
+              <li>FILETE DE ROBALO NEGRO</li>
+              <li>SALMÓN 180 GRS.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="column is-3 is-offset-1">
+        <article class="message is-success">
+          <div class="message-header">
+            <p>ENTRADAS</p>
+
+          </div>
+          <div class="message-body content">
+            <ul>
+              <li>TACOS DE RIB EYE</li>
+              <li>CEVICHE PERUANO </li>
+              <li>TACO DE ATÚN SAKUDORI</li>
+              <li>PROVOLETA CON JAMÓN SERRANO BERENJENAS A LA PARRILLA</li>
+              <li>BERENJENAS A LA PARRILLA</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="column is-3 is-offset-1">
+        <article class="message is-warning">
+          <div class="message-header">
+            <p>GUARNICIONES</p>
+          </div>
+          <div class="message-body content">
+            <ul>
+              <li>Papas a la Francesa Provenzal</li>
+              <li>Cebollitas de cambray</li>
+              <li>Papa al horno</li>
+              <li>Espárragos</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </div>
 
@@ -36,7 +80,8 @@
                     username: "",
                     password: ""
                 },
-                user:{}
+                user:{},
+                authenticated: Boolean(Number(localStorage.getItem('authenticated')))
             }
         },
         methods: {
@@ -58,6 +103,7 @@
                       }
                     }
                     else{
+                      alert("Usuario no registrado");;
                       console.log(this.user);
                     }
                   });

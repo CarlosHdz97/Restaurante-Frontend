@@ -39,7 +39,7 @@
                         </router-link>
                       </ul>
                     </li>
-                    <li>
+                  <li>
                       <router-link   to="/almacenista" replace>Pedidos</router-link>
                       <ul class="sub">
                         <router-link :to="{ name: 'DisplayOrder'}">
@@ -53,27 +53,28 @@
                         </router-link>
                       </ul>
                     </li>
-                    <li>
+                    <!--<li>
                       <router-link   to="/almacenista" replace>Platillos</router-link>
                       <ul class="sub">
                         <a>Generados</a>
                         <a>Crear Platillo</a>
                       </ul>
-                    </li>
+                    </li>-->
                     <li>
                       <router-link   to="/almacenista" replace>Carta</router-link>
                       <ul class="sub">
-                        <a>Menú del dia</a>
-                        <a>Crear Menú</a>
+                        <router-link :to="{ name: 'Init'}">Menú del dia</router-link>
+
+                        <!--<a>Crear Menú</a>-->
                       </ul>
                     </li>
-                    <li>
+                    <!--<li>
                       <router-link   to="/almacenista" replace>Ordenes</router-link>
                       <ul class="sub">
                         <a>Tomar orden del comensal</a>
                         <a>Comanda</a>
                       </ul>
-                    </li>
+                    </li>-->
                     <li>
                       <router-link to="/" v-on:click.native="logout()" replace ><i class="fas fa-power-off"></i></router-link>
                     </li>
@@ -108,6 +109,7 @@
               this.authenticated = status;
           },
           logout() {
+              alert("Se ha cerrado la sesión con exito, ¡adiós!");
               localStorage.setItem('authenticated',0);
               this.authenticated = false;
           }

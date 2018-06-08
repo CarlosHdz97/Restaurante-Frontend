@@ -124,9 +124,9 @@ export default {
     validate() {
       var min = document.getElementById("min");
       var max = document.getElementById("max");
-      
+
       max.addEventListener("keyup", function (event) {
-        if (min.value>max.value) {
+        if (max.value<min.value) {
           max.setCustomValidity("El stock máximo no puede ser menor al stock mínimo");
         } else if (min.value==max.value) {
           max.setCustomValidity("El stock máximo no puede ser igual al stock mínimo");
